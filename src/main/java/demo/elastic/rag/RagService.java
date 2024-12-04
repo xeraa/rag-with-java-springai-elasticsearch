@@ -35,30 +35,3 @@ public class RagService {
         return "a";
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//Bonus QuestionAnswerAdvisor https://spring.io/blog/2024/10/02/supercharging-your-ai-applications-with-spring-ai-advisors
-/*    var chatClient = ChatClient.builder(chatModel)
-        .defaultAdvisors(
-            new MessageChatMemoryAdvisor(chatMemory), // chat-memory advisor
-            new QuestionAnswerAdvisor(vectorStore, SearchRequest.defaults()) // RAG advisor
-        )
-        .build();
-
-    String response = chatClient.prompt()
-        // Set chat memory parameters at runtime
-        .advisors(advisor -> advisor.param("chat_memory_conversation_id", "678")
-                .param("chat_memory_response_size", 100))
-        .user(userText)
-        .call()
-    	.content();*/
