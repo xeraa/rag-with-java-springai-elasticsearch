@@ -40,18 +40,23 @@ public class RagService {
         // Querying the vector store for documents related to the question
         List<Document> vectorStoreResult =
             vectorStore.doSimilaritySearch(SearchRequest.builder().query(question).topK(5)
-                    .similarityThreshold(0.6).build());
+                    .similarityThreshold(0.7).build());
 
         // Merging the documents into a single string
         String documents = vectorStoreResult.stream()
             .map(Document::getText)
             .collect(Collectors.joining(System.lineSeparator()));
 
+        // Exit if the vector search didn't find any results
+        if(documents.isEmpty()){
+            return "No relevant context found. Please change your question.";
+        }
+
         // Setting the prompt with the context
         String prompt = """
             You're assisting with providing the rules of the tabletop game Runewars.
             Use the information from the DOCUMENTS section to provide accurate answers to the
-            question in the QUESTION section. 
+            question in the QUESTION section.
             If unsure, simply state that you don't know.
             
             DOCUMENTS:
