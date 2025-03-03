@@ -40,7 +40,7 @@ public class RagService {
         // Querying the vector store for documents related to the question
         List<Document> vectorStoreResult =
             vectorStore.doSimilaritySearch(SearchRequest.builder().query(question).topK(5)
-                    .similarityThreshold(0.0).build());
+                    .similarityThreshold(0.6).build());
 
         // Merging the documents into a single string
         String documents = vectorStoreResult.stream()
