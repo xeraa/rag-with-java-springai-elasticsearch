@@ -106,7 +106,7 @@ class RagService {
                 System.lineSeparator() +
                 "Found at page: " +
                 // Retrieving the first ranked page number from the document metadata
-                vectorStoreResult.get(0).getMetadata().get(PagePdfDocumentReader.METADATA_START_PAGE_NUMBER) +
+                vectorStoreResult.getFirst().getMetadata().get(PagePdfDocumentReader.METADATA_START_PAGE_NUMBER) +
                 " of the manual";
 
     }
